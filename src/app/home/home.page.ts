@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient,HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-home',
@@ -8,11 +8,44 @@ import { HttpClient } from '@angular/common/http';
 })
 export class HomePage {
 
-  constructor(private http: HttpClient) {
-    this.readAPI('http://www.omdbapi.com/?i=tt3896198&apikey=VOTRE_CLÉ_API')
+  weather = {
+    temp : '',
+    pressure : '',
+    coord : ''
+  };
+
+  constructor(private http: HttpClient) {}
+  readAPI(URL: string) {
+    this.http.get('https://api.openweathermap.org/data/2.5/weather?q=Paris,France&units=metric&appid=ec5ef282f1aac8635d2dcb5ac76b16b7')
       .subscribe((data) => {
       console.log(data);
+      // console.log(data['main']['temp']);
+      // console.log(data['main']['pressure']);
+      // console.log(data['coord']);
+      this.weather.temp = data['main']['temp']
+      this.weather.pressure = data['main']['pressure']
+      this.weather.coord = data['coord']
     });
   }
+  
+  sendPostRequest() {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json'
+        })
+      };
+    let postData = {
+            "name": "Customer004",
+            "email": "customer004@email.com",
+            "tel": "0000252525"
+    }
+
+    this.http.post("http://127.0.0.1:5000/post", postData, httpOptions)
+      .subscribe(data => {
+        console.log(data);
+       }, error => {
+        console.log(error);
+      });
+    }
 }
 
