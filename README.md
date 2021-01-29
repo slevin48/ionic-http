@@ -19,6 +19,7 @@ imports: [
   HttpClientModule <-- ADD THIS MODULE
 ],
 ```
+![img1](img/first-call.png)
 
 ## Second step
 
@@ -42,6 +43,8 @@ constructor(private http: HttpClient) {
   });
 }
 ```
+
+![img2](img/second-call.png)
 
 ## Third step
 
@@ -111,6 +114,8 @@ set FLASK_APP=app.py
 set FLASK_ENV=development
 flask run
 ```
+
+![img3](img/third-call.png)
 
 ## OpenWeatherMap API doc
 https://openweathermap.org/current
