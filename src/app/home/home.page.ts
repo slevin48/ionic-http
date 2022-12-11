@@ -40,7 +40,7 @@ export class HomePage {
             "tel": "0000252525"
     }
 
-    this.http.post("http://127.0.0.1:5000/post", postData, httpOptions)
+    this.http.post("https://ptrt99yha5.execute-api.eu-west-3.amazonaws.com/dev/post", postData, httpOptions)
       .subscribe(data => {
         console.log(data);
        }, error => {

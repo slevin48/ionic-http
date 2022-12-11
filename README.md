@@ -1,7 +1,5 @@
 # HTTP Ionic App
 
-https://drissas.com/ionic-http/
-
 Based on `blank` ionic starter template:
 `ionic start`
 
@@ -96,7 +94,9 @@ app = Flask(__name__)
 def post():
     data = request.data
     jsonData = json.loads(data)
-    print(jsonData)
+    # print(jsonData)
+    with open('data.json','w') as f:
+        json.dump(jsonData,f)
     return jsonify(isError= False,
                     message= "Success",
                     statusCode= 200, data=jsonData), 200
@@ -119,6 +119,7 @@ https://openweathermap.org/current
 https://ionicframework.com/docs/native/http
 
 ## More resources
-https://medium.com/@aashimad1/calling-an-api-or-making-http-requests-in-ionic-bc0b58252014
-https://www.techiediaries.com/ionic-http-post/
-https://www.freakyjolly.com/ionic-native-http-plugin-tutorial-with-example/amp/
+* https://medium.com/@aashimad1/calling-an-api-or-making-http-requests-in-ionic-bc0b58252014
+* https://www.techiediaries.com/ionic-http-post/
+* https://www.freakyjolly.com/ionic-native-http-plugin-tutorial-with-example/amp/
+* Main inspiration: https://drissas.com/ionic-http/
